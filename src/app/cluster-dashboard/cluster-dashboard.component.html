@@ -1,0 +1,13 @@
+<div class="grid">
+    <div class="card" *ngFor="let c of clusters">
+      <h2>{{ c.name }}</h2>
+      <input
+        type="number"
+        [value]="c.serverCount"
+        [readonly]="!isAdmin"
+        #inp
+      />
+      <button *ngIf="isAdmin" (click)="save(c, inp)">✔️</button>
+    </div>
+  </div>
+  
