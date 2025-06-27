@@ -1,13 +1,37 @@
-<div class="grid">
-    <div class="card" *ngFor="let c of clusters">
-      <h2>{{ c.name }}</h2>
-      <input
-        type="number"
-        [value]="c.serverCount"
-        [readonly]="!isAdmin"
-        #inp
-      />
-      <button *ngIf="isAdmin" (click)="save(c, inp)">✔️</button>
+<div class="bg-primary text-white text-center py-2 mb-3">
+  <h4 class="mb-0">CLUSTERS</h4>
+</div>
+
+<div class="container">
+  <div
+    class="d-flex flex-wrap justify-content-start gap-3"
+    style="row-gap: 1.5rem;"
+  >
+    <div class="card shadow-sm p-3" style="flex: 1 1 300px; max-width: 20rem;" *ngFor="let c of clusters">
+      <div class="card-body">
+        <h5 class="card-title">{{ c.name }}</h5>
+        <div class="input-group">
+          <input
+            type="number"
+            class="form-control"
+            [value]="c.serverCount"
+            [readonly]="!isAdmin"
+            #inp
+          />
+          <button
+            *ngIf="isAdmin"
+            class="btn btn-success"
+            (click)="save(c, inp)"
+            title="Save"
+          >
+            ✔️
+          </button>
+        </div>
+      </div>
     </div>
   </div>
-  
+<br>
+  <div class="text-center p-2 m-auto">
+    <button class="btn btn-outline-danger" (click)="logout()">Logout</button>
+  </div>
+</div>
